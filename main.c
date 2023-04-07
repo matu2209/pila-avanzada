@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../../Librerias/Librerias/pila.h"
+#include "pila.h"
 
 int ejercicio1(), ejercicio2(), ejercicio3(), ejercicio4(), ejercicio5(),
     ejercicio6(), ejercicio7(), ejercicio8(), ejercicio9(),
@@ -21,7 +21,7 @@ int main()
     //ejercicio10();
     //ejercicio11();
     //ejercicio12();
-    ejercicio13();
+    //ejercicio13();
     return 0;
 }
 
