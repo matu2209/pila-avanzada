@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1680719600 source:c:\users\usuario\documents\utn - tecnicatura universitaria en porgramacion\progamacion y laboratorio 1\librerias\librerias\pila.c
+	"pila.h"
+
+1679785085 c:\users\usuario\documents\utn - tecnicatura universitaria en porgramacion\progamacion y laboratorio 1\librerias\librerias\pila.h
+	<stdio.h>
+	<malloc.h>
+
+1680735941 source:c:\users\usuario\documents\utn - tecnicatura universitaria en porgramacion\progamacion y laboratorio 1\1\tp pilas avanzada\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../../Librerias/Librerias/pila.h"
+
