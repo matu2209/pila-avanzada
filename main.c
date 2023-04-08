@@ -1,27 +1,87 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
 #include "pila.h"
 
 int ejercicio1(), ejercicio2(), ejercicio3(), ejercicio4(), ejercicio5(),
     ejercicio6(), ejercicio7(), ejercicio8(), ejercicio9(),
     ejercicio10(),ejercicio11(), ejercicio12(), ejercicio13();
 
-int main()
-{
+int main(){
+    int opcion;
+    char temp[10];
     srand(time(NULL));
-    //ejercicio1();
-    //ejercicio2();
-    //ejercicio3();
-    //ejercicio4();
-    //ejercicio5();
-    //ejercicio6();
-    //ejercicio7();
-    //ejercicio8();
-    //ejercicio9();
-    //ejercicio10();
-    //ejercicio11();
-    //ejercicio12();
-    //ejercicio13();
+    do{
+        printf("\nSeleccione una opcion para continuar. Para salir presione '0'\n");
+        printf("\n1. Sumar los elementos de una pila");
+        printf("\n2. Contar los elementos de una pila");
+        printf("\n3. Calcular el promedio de los valores de una pila");
+        printf("\n4. Encontrar el menor elemento de una pila y guardarlo en otra");
+        printf("\n5. Insertar un elemento en una pila ordenada");
+        printf("\n6. Pasar los elementos de una pila a otra de forma tal que la segunda pila quede ordenada de mayor (tope) a menor (base)");
+        printf("\n7. Determinar si un elemento buscado esta dentro de una pila. Al encontrarlo, finalizar la busqueda");
+        printf("\n8. Eliminar un elemento de una pila. El eliminarlo, finalizar el recorrido y dejar el resto en el mismo orden");
+        printf("\n9. Verificar si una pila es capicua.");
+        printf("\n10. Dadas dos pilas A y B que simulan conjuntos, realizar un programa que calcule en la pila C la operacion de union");
+        printf("\n11. Intercalar dos pilas ordenadas en forma creciente (ORDENADA1 y ORDENADA2) dejando el resultado en una pila tambien ordenada en forma creciente (ORDENADAFINAL)");
+        printf("\n12. Dada una pila ordenarla en forma ascendente por metodo de inserción dejando el resultado en la pila");
+        printf("\n13. Juego de cartas\n");
+        //fflush(stdin);
+        //resp = getche( );
+        //scanf("%d", &opcion);
+        fgets(temp,10,stdin);
+        opcion = atoi(temp);
+        system("CLS");
+        //MENU PARA INTERACTUAR CON EL USUARIO
+        switch(opcion){
+            case 1:
+                ejercicio1();
+            break;
+            case 2:
+                ejercicio2();
+            break;
+            case 3:
+                ejercicio3();
+            break;
+            case 4:
+                ejercicio4();
+            break;
+            case 5:
+                ejercicio5();
+            break;
+            case 6:
+                ejercicio6();
+            break;
+            case 7:
+                ejercicio7();
+            break;
+            case 8:
+                ejercicio8();
+            break;
+            case 9:
+                ejercicio9();
+            break;
+            case 10:
+                ejercicio10();
+            break;
+            case 11:
+                ejercicio11();
+            break;
+            case 12:
+                ejercicio12();
+            break;
+            case 13:
+                ejercicio13();
+            break;
+        }
+        //printf("\nPara Salir presione '0'\n");
+        //scanf("%d", &opcion);
+        //fflush(stdin);
+        //resp = getche();
+        printf("\nPresione cualquier tecla para continuar...");
+        getch();
+        system("CLS");
+    } while (opcion != 0);
     return 0;
 }
 
@@ -416,6 +476,8 @@ int ejercicio9()
     apilar(&pila,2);
     apilar(&pila,9);
 
+    //MOSTRAMOS LA PILA
+    mostrar(&pila);
     //HACEMOS UNA COPIA EXACTA DE LA PILA
     while (!pilavacia(&pila)){
         apilar(&copiaPila, tope(&pila));
@@ -515,13 +577,13 @@ int ejercicio11()
 {
 
     //VARIABLES A USAR
-    Pila pila, pila2, ordenadaFinal;
+    Pila pila, pila2, ordenada, ordenadaFinal;
 
     //INICIALIZAR PILAS!!
     inicpila(&pila);
     inicpila(&pila2);
     inicpila(&ordenadaFinal);
-    //inicpila(&aux2);
+    inicpila(&ordenada);
 
     //SE CARGAN LAS PILAS Y SE LAS ORDENA
     cargarElementosCantidad(&pila, 2);
@@ -535,15 +597,18 @@ int ejercicio11()
     while (!pilavacia(&pila) && !pilavacia(&pila2))
     {
         if (tope(&pila) > tope(&pila2))
-            apilar(&ordenadaFinal, desapilar(&pila));
+            apilar(&ordenada, desapilar(&pila));
         else
-            apilar(&ordenadaFinal, desapilar(&pila2));
+            apilar(&ordenada, desapilar(&pila2));
     }
     while (!pilavacia(&pila2)){
-        apilar(&ordenadaFinal, desapilar(&pila2));
+        apilar(&ordenada, desapilar(&pila2));
     }
     while (!pilavacia(&pila)){
-        apilar(&ordenadaFinal, desapilar(&pila));
+        apilar(&ordenada, desapilar(&pila));
+    }
+    while (!pilavacia(&ordenada)){
+        apilar(&ordenadaFinal, desapilar(&ordenada));
     }
 
     mostrar(&ordenadaFinal);
